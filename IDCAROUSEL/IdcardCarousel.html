@@ -132,7 +132,7 @@
   <button id="nextBtn" class="nav-button"><i style="color: #fbc2eb;" class="fa-whiteboard fa-semibold fa-arrow-right"></i></i></button>
 
   <script>
-    const students = [
+    var students = [
       {
         name: "SON GOKU(KAKAROT)",
         department: "CYBER SECURITY",
@@ -192,48 +192,61 @@
         department: "HARDWARE ENGINEERING",
         id: "241373",
         photo: "IMG/maipfp.jpeg"
+      },
+      {
+        name: "ZENO SAMA",
+        department: "CAD",
+        id: "241374",
+        photo: "IMG/zenopfp.jpeg"
+      },
+      {
+        name: "『ƈʀɨʍֆօռ♦』",
+        department: "MAIN DEVELOPER",
+        id: "UNDEFINED",
+        photo: "IMG/『ƈʀɨʍֆօռ♦』pfp.jpg"
       }
     ];
 
-    let currentIndex = 0;
-    const total = students.length;
-    const card = document.getElementById("card");
+    var currentIndex = 0;
+    var card = document.getElementById("card");
 
-    function renderCard(index) {
-      const student = students[index];
-      card.innerHTML = `
-        <div class="logo">
-          <img src="IMG/sqi_logo-removebg-preview.png" alt="SQI Logo" />
-        </div>
-        <div class="school-name">SQI COLLEGE OF ICT<br>IBADAN</div>
-        <div class="student-label">STUDENT</div>
-        <div class="photo">
-          <img src="${student.photo}" alt="Student Photo">
-        </div>
-        <div class="name">${student.name}</div>
-        <div class="department">${student.department}</div>
-        <div class="student-id">Student ID | <span>${student.id}</span></div>
-        <div class="footer">edu.sqi.ng</div>
-      `;
+    function showCard(index) {
+      var student = students[index];
+
+      card.innerHTML =
+        '<div class="logo">' +
+          '<img src="IMG/sqi_logo-removebg-preview.png" alt="SQI Logo" />' +
+        '</div>' +
+        '<div class="school-name">SQI COLLEGE OF ICT<br>IBADAN</div>' +
+        '<div class="student-label">STUDENT</div>' +
+        '<div class="photo">' +
+          '<img src="' + student.photo + '" alt="Student Photo">' +
+        '</div>' +
+        '<div class="name">' + student.name + '</div>' +
+        '<div class="department">' + student.department + '</div>' +
+        '<div class="student-id">Student ID | <span>' + student.id + '</span></div>' +
+        '<div class="footer">edu.sqi.ng</div>';
     }
 
-    document.getElementById("prevBtn").onclick = () => {
+    var prevBtn = document.getElementById("prevBtn");
+    prevBtn.onclick = function () {
       currentIndex = currentIndex - 1;
       if (currentIndex < 0) {
-        currentIndex = total - 1;
+        currentIndex = students.length - 1;
       }
-      renderCard(currentIndex);
+      showCard(currentIndex);
     };
 
-    document.getElementById("nextBtn").onclick = () => {
+    var nextBtn = document.getElementById("nextBtn");
+    nextBtn.onclick = function () {
       currentIndex = currentIndex + 1;
-      if (currentIndex >= total) {
+      if (currentIndex >= students.length) {
         currentIndex = 0;
       }
-      renderCard(currentIndex);
+      showCard(currentIndex);
     };
 
-    renderCard(currentIndex);
+    showCard(currentIndex);
   </script>
 </body>
 </html>
